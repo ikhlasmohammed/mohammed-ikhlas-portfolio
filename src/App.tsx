@@ -3,7 +3,11 @@ import { useEffect, useRef, useState } from "react"
 type Screenshot = { src: string; alt: string; label: string }
 
 function assetUrl(path: string) {
-  return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`
+  const assetPath = path.replace(/^\/+/, "")
+  if (import.meta.env.PROD) {
+    return `https://raw.githubusercontent.com/ikhlasmohammed/mohammed-ikhlas-portfolio/gh-pages/${assetPath}`
+  }
+  return `${import.meta.env.BASE_URL}${assetPath}`
 }
 
 type Project = {
