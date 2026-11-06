@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from "react"
 
 type Screenshot = { src: string; alt: string; label: string }
 
+function assetUrl(path: string) {
+  return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`
+}
+
 type Project = {
   id: string
   slug: string
@@ -543,7 +547,7 @@ function ProjectDetail({
                     aria-label={`View ${screenshot.label} screenshot`}
                   >
                     <img
-                      src={screenshot.src}
+                      src={assetUrl(screenshot.src)}
                       alt={screenshot.alt}
                       loading="lazy"
                       decoding="async"
@@ -597,7 +601,7 @@ function ProjectDetail({
               ×
             </button>
             <img
-              src={selectedScreenshot.src}
+              src={assetUrl(selectedScreenshot.src)}
               alt={selectedScreenshot.alt}
               decoding="async"
             />
@@ -852,7 +856,7 @@ function App() {
           <div className="endeavour-gallery">
             <figure className="endeavour-feature">
               <img
-                src="/images/hong-kong-shenzhen/huawei.jpg"
+                src={assetUrl("/images/hong-kong-shenzhen/huawei.jpg")}
                 alt="Temasek Polytechnic students outside Huawei in Shenzhen"
                 loading="lazy"
                 decoding="async"
@@ -861,7 +865,7 @@ function App() {
             </figure>
             <figure>
               <img
-                src="/images/hong-kong-shenzhen/merit-award.jpg"
+                src={assetUrl("/images/hong-kong-shenzhen/merit-award.jpg")}
                 alt="Merit Award in AI and Analytics from the International Competition 2026"
                 loading="lazy"
                 decoding="async"
@@ -870,7 +874,7 @@ function App() {
             </figure>
             <figure>
               <img
-                src="/images/hong-kong-shenzhen/lenovo.jpg"
+                src={assetUrl("/images/hong-kong-shenzhen/lenovo.jpg")}
                 alt="Temasek Polytechnic students visiting Lenovo Future Centre"
                 loading="lazy"
                 decoding="async"
@@ -879,7 +883,7 @@ function App() {
             </figure>
             <figure>
               <img
-                src="/images/hong-kong-shenzhen/competition.jpg"
+                src={assetUrl("/images/hong-kong-shenzhen/competition.jpg")}
                 alt="Temasek Polytechnic team at International Competition 2026"
                 loading="lazy"
                 decoding="async"
@@ -888,7 +892,7 @@ function App() {
             </figure>
             <figure>
               <img
-                src="/images/hong-kong-shenzhen/discussion.jpg"
+                src={assetUrl("/images/hong-kong-shenzhen/discussion.jpg")}
                 alt="Student speaking with a participant during the study trip"
                 loading="lazy"
                 decoding="async"
@@ -919,7 +923,7 @@ function App() {
           <div className="endeavour-gallery">
             <figure className="endeavour-feature">
               <img
-                src="/images/hanoi/train-street.jpg"
+                src={assetUrl("/images/hanoi/train-street.jpg")}
                 alt="Hanoi train street in the Old Quarter"
                 loading="lazy"
                 decoding="async"
@@ -928,7 +932,7 @@ function App() {
             </figure>
             <figure>
               <img
-                src="/images/hanoi/hanoi-night.jpg"
+                src={assetUrl("/images/hanoi/hanoi-night.jpg")}
                 alt="Hanoi street at night"
                 loading="lazy"
                 decoding="async"
@@ -937,7 +941,7 @@ function App() {
             </figure>
             <figure>
               <img
-                src="/images/hanoi/vsip-bac-ninh.jpg"
+                src={assetUrl("/images/hanoi/vsip-bac-ninh.jpg")}
                 alt="VSIP Bac Ninh sign with Singapore and Vietnam flags"
                 loading="lazy"
                 decoding="async"
@@ -946,7 +950,7 @@ function App() {
             </figure>
             <figure>
               <img
-                src="/images/hanoi/global-studies.jpg"
+                src={assetUrl("/images/hanoi/global-studies.jpg")}
                 alt="Students taking part in a Global Studies activity in Vietnam"
                 loading="lazy"
                 decoding="async"
