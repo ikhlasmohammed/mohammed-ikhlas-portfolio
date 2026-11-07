@@ -36,18 +36,18 @@ const projects: Project[] = [
     slug: "calory",
     title: "Calory.AI",
     category: "Computer vision",
-    summary: "Food recognition turned into a practical calorie estimate.",
+    summary: "I built a cloud-based meal tracker around food image recognition.",
     description:
-      "An image-first nutrition experience that turns a meal photo into a useful estimate and a saved record.",
+      "I built the AWS workflow behind a meal photo classifier, calorie tracker and daily-goal system.",
     tools: ["AWS", "Rekognition", "Lambda", "Cognito", "RDS", "DynamoDB"],
     problem:
-      "Logging meals is slow and inconsistent when every ingredient has to be entered manually.",
+      "I wanted to reduce the effort of logging meals, but the app still needed to keep each user’s goal and meal history consistent.",
     built:
-      "A cloud-native estimator using Rekognition Custom Labels, a serverless API, authentication and meal history.",
+      "I connected S3, CloudFront, Cognito, API Gateway, Lambda, Rekognition Custom Labels, RDS, DynamoDB and SNS into one workflow.",
     result:
-      "A complete workflow that takes a food photo from upload to classification, calorie estimate and saved record.",
+      "I fixed the goal-persistence and Singapore-time bugs, and built a working flow from signup to food recognition, meal logging and goal notifications.",
     caseStudy:
-      "Calory.AI combines image recognition with a practical nutrition workflow. A meal photo is classified through AWS Rekognition, converted into an estimated calorie and macro breakdown, and saved to a personal diary so users can review their habits over time.",
+      "I built Calory.AI for my Cloud Technologies for AI module. The main flow starts when a user uploads a meal photo. Rekognition Custom Labels identifies whether it is pizza, a burger or crispy chicken, RDS provides the calorie and macro information, and Lambda saves the meal through API Gateway. I used Cognito for signup, email verification and login, S3 and CloudFront for the frontend, DynamoDB for daily goal status, and SNS to notify a user when the goal is reached. The difficult part was not just connecting the services; it was tracing bugs across them. The calorie goal collected during signup was silently dropped because it was never sent to the backend, while login replaced it with a hardcoded value. I fixed this by adding a Cognito custom attribute and changing both signup and login to persist and return it. I also corrected date calculations because Lambda runs in UTC and was producing the wrong 'today' total near midnight in Singapore. API Gateway changes also needed a manual stage redeploy and an explicit Lambda permission for apigateway.amazonaws.com. I used curl to separate backend problems from browser CORS errors. Finally, I learned to start Rekognition Custom Labels only when testing and stop it immediately afterwards because it bills hourly.",
     subject: "Cloud Technologies for AI",
     role: "Cloud application developer",
     preview: {
@@ -95,18 +95,18 @@ const projects: Project[] = [
     slug: "valu",
     title: "Valu.AI",
     category: "Machine learning",
-    summary: "Making HDB resale estimates easier to understand.",
+    summary: "I built an HDB resale estimator and tested which model actually worked best.",
     description:
-      "A transparent property valuation model that makes complex pricing signals easier to explore.",
+      "A machine learning project where I handled the data, model comparison and Streamlit app myself.",
     tools: ["Python", "scikit-learn", "Pandas", "Random Forest"],
     problem:
-      "Resale prices vary across location, flat type, floor range, lease and changing market conditions.",
+      "HDB prices depend on several connected factors, and a model can look accurate while still being inconsistent when it is used inside an app.",
     built:
-      "A reproducible ML pipeline comparing Linear Regression and Random Forest, with feature engineering and stratified sampling.",
+      "I filtered 2025-2026 data, sampled 5,000 rows by town, engineered features, compared three models and reproduced the preprocessing in Streamlit.",
     result:
-      "A clear model comparison that exposed where non-linear relationships improved prediction quality.",
+      "Log-transformed Linear Regression reached an R-squared of 0.908 and an RMSE of $59,812, so I chose it over the more complex alternatives.",
     caseStudy:
-      "Valu.AI turns HDB resale data into an estimate that is easier to interpret. Users provide the town, flat type, floor area, storey and remaining lease, while the model compares those inputs against recent transactions and presents the predicted value alongside market context and comparable sales.",
+      "I built Valu.AI from start to finish for my Machine Learning for Developers module. I filtered the HDB resale data to 2025 and 2026, kept 3-, 4- and 5-room flats, and took a stratified sample of 5,000 rows by town. I removed block and street name because their high number of unique values did not give the model useful general patterns. I converted the remaining lease to months, encoded storey as an ordered number, and split the data before encoding so the test set stayed clean. The biggest improvement came from log-transforming price: RMSE fell from $70,402 to $59,812. I compared Linear Regression, a Random Forest tuned with RandomizedSearchCV, and Gradient Boosting. Linear Regression on log price won with an R-squared of 0.908. I chose it even though Random Forest had a slightly better MAE because RMSE penalises large mistakes more heavily and the simpler model was easier to deploy. In the Streamlit app, I built the input form, prediction display, market-context chart and comparable-sales list. I found a bug where pd.get_dummies on one row produced all-zero columns when drop_first=True, so I set the app columns explicitly. I also had to keep the lease-date calculation and log1p/expm1 steps identical between the notebook and app. The main lesson was that a good notebook result is not enough; the deployed preprocessing must match exactly.",
     subject: "Machine Learning for Developers",
     role: "Machine learning developer",
     preview: {
@@ -140,18 +140,18 @@ const projects: Project[] = [
     slug: "audit",
     title: "AuditXpress",
     category: "Process automation",
-    summary: "Automating expense checks without hiding the audit trail.",
+    summary: "I built an unattended expense-auditing workflow with clear records.",
     description:
-      "A traceable automation system that turns incoming expense claims into structured review outcomes.",
+      "An end-to-end UiPath robot that extracts claims, applies policy rules and separates approved and rejected outcomes.",
     tools: ["UiPath", "OCR", "Regex", "Python", "Outlook", "Excel"],
     problem:
-      "Manual expense reviews require repetitive email handling, document reading and policy checks.",
+      "Expense claims arrived in different formats, so the robot had to extract reliable values before it could apply any policy.",
     built:
-      "A UiPath robot that reads submissions, extracts PDF fields, runs policy rules and records exceptions.",
+      "I routed native PDFs and receipt images through different extraction paths, validated the fields in Python, and wrote the results to Outlook and Excel.",
     result:
-      "A dependable workflow that produces structured logs and sends clear, actionable outcome emails.",
+      "The robot can complete an unattended run, reject invalid claims with a dynamic email, and keep both a payment batch and master audit log.",
     caseStudy:
-      "AuditXpress demonstrates a dual-path data extraction workflow: native text reading handles PDFs while Tesseract OCR reads receipt images, after which regular expressions isolate the date, amount and merchant fields. The parsed variables are passed into a dedicated Python scope that invokes the evaluate_claim method against company expense policies. Rejected claims receive a dynamic Outlook email; approved claims are appended to an Excel payment batch, while every record is written to a master Excel audit log. UiPath Orchestrator then confirms the complete process as a successful unattended job.",
+      "I implemented the entire AuditXpress architecture, from email ingestion to the final Excel reports, for my Robotic Process Automation module. Because claims arrived as both PDFs and physical receipt images, I created a dual-path workflow: native PDFs went through a text reader, while images went through AI-powered OCR. OCR output was inconsistent, so I spent time tuning Regex patterns for the transaction date, amount and merchant. I kept the policy logic in audit_logic.py instead of putting every rule inside UiPath, then converted UiPath strings into floats and datetime values before calling evaluate_claim. Office 365 authentication caused problems for unattended execution, so I switched to classic email activities to avoid manual login interruptions. I also used nested Try-Catch blocks so one invalid claim could trigger a rejection email and update the Master Audit Log without stopping the Payment Batch process. UiPath Orchestrator then ran the workflow unattended and confirmed the completed job.",
     subject: "Robotic Process Automation",
     role: "Automation developer",
     preview: {
@@ -204,18 +204,18 @@ const projects: Project[] = [
     slug: "overload",
     title: "Overload.AI",
     category: "Mobile product",
-    summary: "A workout log built around consistency, not complexity.",
+    summary: "I built a Flutter fitness app with deterministic training advice.",
     description:
-      "A focused mobile training companion designed to keep set logging quick and progress visible.",
+      "A Flutter app where I built workout logging, progress analysis, recommendations, authentication and navigation.",
     tools: ["Flutter", "Dart", "Firebase", "Riverpod"],
     problem:
-      "Gym trackers create friction when logging a set takes longer than performing one.",
+      "The app needed to feel personalised without allowing an unreliable AI response to decide the actual workout numbers.",
     built:
-      "A Flutter app with reusable workout flows, Riverpod state and email, Google and Phone OTP sign-in.",
+      "I separated Flutter UI from business logic with Riverpod, added Firebase services, and calculated progressive overload in Dart before requesting AI explanations.",
     result:
-      "A reliable cross-platform foundation for recording sessions and understanding training progress.",
+      "The app continues to give mathematically valid recommendations when Groq is slow, rate-limited or unavailable.",
     caseStudy:
-      "Overload.AI is designed around the rhythm of a real workout. Quick set logging, reusable workout flows and visible progress tracking keep the experience focused, while Firebase-backed accounts and Riverpod state management provide a dependable foundation for a cross-platform mobile product.",
+      "I worked on Overload.AI for my Mobile App Development module. I built the main Flutter experience, including onboarding, authentication, navigation, workout sessions, set logging, rest timers, charts, progress analysis and recommendations. Riverpod keeps workout logs in providers so adding, editing or deleting a set refreshes the relevant screens without manually passing data around. I put Firestore operations in service classes such as WorkoutLogService instead of placing them directly in screens, which made it easier to support real-time streams, filtered queries, sorting and aggregate queries. The main technical challenge was the progressive-overload system. Dart calculates estimated one-rep max values and decides whether to add weight or one repetition based on the user’s recent best set. Groq only explains those results in natural language; it never decides the numbers. I also batched exercises into one request to reduce API calls and added a fallback when the service fails. For realistic recommendations, I select the best set from the latest training day rather than blindly using the last set, since later sets may be lower because of fatigue.",
     subject: "Mobile App Development",
     role: "Mobile application developer",
     preview: {
@@ -340,9 +340,7 @@ function Mark({ type }: { type: string }) {
 }
 
 function Header({ detail = false }: { detail?: boolean }) {
-  const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("work")
-  const headerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     if (detail) return
@@ -362,41 +360,15 @@ function Header({ detail = false }: { detail?: boolean }) {
     return () => observer.disconnect()
   }, [detail])
 
-  useEffect(() => {
-    if (!menuOpen) return
-    const closeMenu = (event: MouseEvent) => {
-      if (!headerRef.current?.contains(event.target as Node)) setMenuOpen(false)
-    }
-    document.addEventListener("mousedown", closeMenu)
-    return () => document.removeEventListener("mousedown", closeMenu)
-  }, [menuOpen])
-
   return (
-    <header className="site-header" ref={headerRef}>
+    <header className="site-header">
       {!detail && (
-        <>
-          <nav
-            id="primary-navigation"
-            className={menuOpen ? "is-open" : ""}
-            aria-label="Primary navigation"
-          >
+        <nav aria-label="Primary navigation">
             <a className={activeSection === "work" ? "is-active" : ""} href="#work">Work</a>
             <a className={activeSection === "oceanx" ? "is-active" : ""} href="#oceanx">OceanX</a>
             <a className={activeSection === "endeavour" ? "is-active" : ""} href="#endeavour">Endeavour</a>
             <a className={activeSection === "contact" ? "is-active" : ""} href="#contact">Contact</a>
-          </nav>
-          <button
-            className="menu-toggle"
-            type="button"
-            aria-expanded={menuOpen}
-            aria-controls="primary-navigation"
-            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            <span />
-            <span />
-          </button>
-        </>
+        </nav>
       )}
     </header>
   )
@@ -689,25 +661,21 @@ function App() {
     <main>
       <Header />
       <section className="hero" id="top">
-        <div className="hero-kicker">
-          <div className="hero-kicker-left">
-            <span>Applied AI student</span>
-            <span>Temasek Polytechnic</span>
-          </div>
-        </div>
         <h1>
           I build intelligent systems that make <em>complex work</em> feel
           simple.
         </h1>
         <div className="hero-bottom">
           <p>
-            Mohammed Ikhlas is an Applied AI student in Singapore, focused on
-            thoughtful machine learning, automation and product experiences.
+            I am a Year 2 Diploma in Applied AI student at Temasek Polytechnic.
+            I enjoy building machine learning models, cloud applications,
+            automation workflows and mobile products, then working through the
+            technical problems that make them reliable.
           </p>
           <div className="hero-links">
             <a
               className="button"
-              href="https://github.com"
+              href="https://github.com/ikhlasmohammed"
               target="_blank"
               rel="noreferrer"
             >
@@ -715,7 +683,7 @@ function App() {
             </a>
             <a
               className="button"
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/mohammed-ikhlas"
               target="_blank"
               rel="noreferrer"
             >
