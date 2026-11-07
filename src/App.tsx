@@ -369,6 +369,9 @@ function Header({ detail = false }: { detail?: boolean }) {
 
   return (
     <header className="site-header" ref={headerRef}>
+      <a className="site-name" href="/" aria-label="Mohammed Ikhlas home">
+        Mohammed Ikhlas
+      </a>
       {!detail && (
         <>
           <nav
