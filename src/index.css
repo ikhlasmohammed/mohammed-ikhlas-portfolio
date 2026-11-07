@@ -296,7 +296,9 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
 .case-grid h2 { font: 500 27px 'Manrope'; letter-spacing: -.04em; margin: 28px 0 18px; }
 .case-grid p { color: var(--muted); font-size: 13px; line-height: 1.8; }
 .case-story { border-top: 1px solid var(--line); display: grid; gap: 30px; grid-template-columns: 25% 1fr; margin-top: 55px; padding-top: 38px; }
-.case-story > p:last-child { color: #c4cac5; font-size: clamp(16px, 1.6vw, 21px); line-height: 1.7; max-width: 760px; }
+.case-story-copy { max-width: 760px; }
+.case-story-copy p { color: #c4cac5; font-size: clamp(16px, 1.6vw, 21px); line-height: 1.7; margin: 0 0 24px; }
+.case-story-copy p:last-child { margin-bottom: 0; }
 .project-screens { border-top: 1px solid var(--line); margin-top: 70px; padding-top: 42px; }
 .project-screens-intro { display: flex; justify-content: space-between; gap: 30px; margin-bottom: 30px; }
 .project-screens-intro > p:last-child { color: var(--muted); font-size: 13px; line-height: 1.7; max-width: 340px; }
