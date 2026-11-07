@@ -668,8 +668,7 @@ function App() {
       <Header />
       <section className="hero" id="top">
         <h1>
-          I build intelligent systems that make <em>complex work</em> feel
-          simple.
+          Building AI that feels <em>human.</em>
         </h1>
         <div className="hero-bottom">
           <p>
