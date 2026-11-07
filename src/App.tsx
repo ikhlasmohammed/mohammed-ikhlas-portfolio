@@ -327,9 +327,7 @@ function Mark({ type }: { type: string }) {
 }
 
 function Header({ detail = false }: { detail?: boolean }) {
-  const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("work")
-  const headerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     if (detail) return
@@ -349,36 +347,13 @@ function Header({ detail = false }: { detail?: boolean }) {
     return () => observer.disconnect()
   }, [detail])
 
-  useEffect(() => {
-    if (!menuOpen) return
-    const closeMenu = (event: MouseEvent) => {
-      if (!headerRef.current?.contains(event.target as Node)) setMenuOpen(false)
-    }
-    document.addEventListener("mousedown", closeMenu)
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false)
-    }
-    document.addEventListener("keydown", closeOnEscape)
-    document.body.style.overflow = "hidden"
-    return () => {
-      document.removeEventListener("mousedown", closeMenu)
-      document.removeEventListener("keydown", closeOnEscape)
-      document.body.style.overflow = ""
-    }
-  }, [menuOpen])
-
   return (
-    <header className="site-header" ref={headerRef}>
+    <header className="site-header">
       <span className="site-name">
         Mohammed Ikhlas
       </span>
       {!detail && (
-        <>
-          <nav
-            id="primary-navigation"
-            className={menuOpen ? "is-open" : ""}
-            aria-label="Primary navigation"
-          >
+        <nav aria-label="Primary navigation">
             {[
               ["work", "Work"],
               ["oceanx", "OceanX"],
@@ -390,25 +365,12 @@ function Header({ detail = false }: { detail?: boolean }) {
                 key={id}
                 className={activeSection === id ? "is-active" : ""}
                 href={`#${id}`}
-                onClick={() => setMenuOpen(false)}
               >
                 <span className="nav-label">{label}</span>
                 <span className="nav-dot" aria-hidden="true" />
               </a>
             ))}
-          </nav>
-          <button
-            className="menu-toggle"
-            type="button"
-            aria-expanded={menuOpen}
-            aria-controls="primary-navigation"
-            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            <span />
-            <span />
-          </button>
-        </>
+        </nav>
       )}
     </header>
   )
