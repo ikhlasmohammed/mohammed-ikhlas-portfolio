@@ -357,6 +357,28 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
 .lightbox-next svg { transform: rotate(180deg); }
 
 @media (min-width: 1001px) {
+  .hero {
+    padding-bottom: 72px;
+    padding-top: 72px;
+  }
+  .hero h1 {
+    font-size: clamp(76px, 8.6vw, 138px);
+    max-width: 1120px;
+    padding: 82px 0 74px;
+  }
+  .hero-bottom {
+    align-items: flex-start;
+    border-left: 1px solid var(--line);
+    gap: 48px;
+    margin-left: 14%;
+    padding-left: 24px;
+  }
+  .hero-bottom > p {
+    max-width: 500px;
+  }
+  .hero-links {
+    margin-left: auto;
+  }
   .project-screens-grid-audit figure:last-child { grid-column: 2; }
 }
 .next-project { border-top: 1px solid var(--line); padding-bottom: 90px; padding-top: 80px; }
