@@ -379,6 +379,9 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .hero-links {
     margin-left: auto;
   }
+  .achievement-list article:last-child {
+    grid-column: 2;
+  }
   .project-screens-grid-audit figure:last-child { grid-column: 2; }
 }
 .next-project { border-top: 1px solid var(--line); padding-bottom: 90px; padding-top: 80px; }
