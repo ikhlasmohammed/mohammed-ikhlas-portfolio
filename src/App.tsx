@@ -344,7 +344,7 @@ function Header({ detail = false }: { detail?: boolean }) {
 
   useEffect(() => {
     if (detail) return
-    const sections = ["work", "oceanx", "endeavour", "contact"]
+    const sections = ["work", "oceanx", "endeavour", "achievements", "contact"]
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null)
     const observer = new IntersectionObserver(
@@ -367,6 +367,7 @@ function Header({ detail = false }: { detail?: boolean }) {
             <a className={activeSection === "work" ? "is-active" : ""} href="#work">Work</a>
             <a className={activeSection === "oceanx" ? "is-active" : ""} href="#oceanx">OceanX</a>
             <a className={activeSection === "endeavour" ? "is-active" : ""} href="#endeavour">Endeavour</a>
+            <a className={activeSection === "achievements" ? "is-active" : ""} href="#achievements">Achievements</a>
             <a className={activeSection === "contact" ? "is-active" : ""} href="#contact">Contact</a>
         </nav>
       )}
@@ -955,17 +956,60 @@ function App() {
       <section className="achievements-section" id="achievements">
         <div className="achievements-intro">
           <div>
-            <p className="eyebrow">05 / Beyond the work</p>
+            <p className="eyebrow">05 / Achievements</p>
             <h2>
-              Learning by
+              Recognition earned
               <br />
-              taking the lead.
+              through action.
             </h2>
           </div>
           <p>
-            Building technical depth while contributing to teams, communities
-            and ambitious ideas.
+            A mix of academic results, technical competitions, service and
+            leadership from secondary school to polytechnic.
           </p>
+        </div>
+        <div className="achievement-feature-grid">
+          <figure className="achievement-feature">
+            <img
+              src={assetUrl("/images/achievements/top-in-class-2024.png")}
+              alt="Receiving a Top in Class 2024 academic achievement certificate"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <span>2024 / Academic achievement</span>
+              <strong>Top in Class</strong>
+            </figcaption>
+          </figure>
+          <div className="achievement-photo-stack">
+            <figure>
+              <img
+                src={assetUrl("/images/achievements/outstanding-service-award.png")}
+                alt="Receiving the Outstanding Service Award at school"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Outstanding Service Award</figcaption>
+            </figure>
+            <figure>
+              <img
+                src={assetUrl("/images/achievements/outstanding-cadet-award.png")}
+                alt="Outstanding Cadet award certificate from National Cadet Corps"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Outstanding Cadet</figcaption>
+            </figure>
+            <figure>
+              <img
+                src={assetUrl("/images/achievements/parade-commander.png")}
+                alt="Serving as Parade Commander during a school National Day parade"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>National Day Parade Commander</figcaption>
+            </figure>
+          </div>
         </div>
         <div className="achievement-list">
           <article>
@@ -975,39 +1019,75 @@ function App() {
               <h3>Merit Award</h3>
               <strong>HKIIT International Competition</strong>
               <p>
-                Built a stock forecasting ML pipeline and web app with a team of
-                four in two days.
+                Built a stock forecasting machine learning pipeline and web app
+                with a team of four in two days.
               </p>
             </div>
           </article>
           <article>
-            <span className="achievement-marker">LEAD</span>
+            <span className="achievement-marker">2026</span>
             <div>
-              <p className="eyebrow">Leadership</p>
-              <h3>Vice President</h3>
-              <strong>Applied AI Student Interest Group</strong>
+              <p className="eyebrow">Academic recognition</p>
+              <h3>Certificate of Academic Achievement</h3>
+              <strong>Temasek Polytechnic</strong>
               <p>
-                Supporting a student community through practical AI learning and
-                peer-led initiatives.
+                Awarded for academic performance in the top 25% of the cohort.
               </p>
             </div>
           </article>
           <article>
-            <span className="achievement-marker">10%</span>
+            <span className="achievement-marker">2026</span>
             <div>
-              <p className="eyebrow">Programme</p>
-              <h3>Temasek LEAD</h3>
-              <strong>Top 10% of the cohort</strong>
+              <p className="eyebrow">Competition</p>
+              <h3>PolyFinTech100 API Hackathon</h3>
+              <strong>Temasek Polytechnic / Insurtech</strong>
               <p>
-                Selected for the polytechnic’s leadership development programme.
+                Participated in the Prudential category and explored an
+                insurance technology problem.
               </p>
+            </div>
+          </article>
+          <article>
+            <span className="achievement-marker">2024</span>
+            <div>
+              <p className="eyebrow">Leadership and service</p>
+              <h3>EAGLES Award</h3>
+              <strong>Changkat Changi Secondary School</strong>
+              <p>Awarded for top-tier leadership and service.</p>
+            </div>
+          </article>
+          <article>
+            <span className="achievement-marker">2024</span>
+            <div>
+              <p className="eyebrow">NCC (Air)</p>
+              <h3>Outstanding Cadet</h3>
+              <strong>Changkat Changi Secondary School</strong>
+              <p>Awarded for outstanding performance and conduct as a cadet.</p>
+            </div>
+          </article>
+          <article>
+            <span className="achievement-marker">2024</span>
+            <div>
+              <p className="eyebrow">Service</p>
+              <h3>Outstanding Service Award</h3>
+              <strong>Changkat Changi Secondary School</strong>
+              <p>Awarded for outstanding service to the school.</p>
+            </div>
+          </article>
+          <article>
+            <span className="achievement-marker">2022</span>
+            <div>
+              <p className="eyebrow">NCC (Air)</p>
+              <h3>Best Senior Cadet</h3>
+              <strong>Changkat Changi Secondary School</strong>
+              <p>Awarded for the best performance among senior cadets.</p>
             </div>
           </article>
         </div>
       </section>
 
       <footer id="contact">
-        <p className="eyebrow">05 / Let’s connect</p>
+        <p className="eyebrow">06 / Let’s connect</p>
         <div className="footer-main">
           <h2>
             Have an idea?
