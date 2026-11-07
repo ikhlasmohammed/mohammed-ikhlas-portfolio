@@ -340,7 +340,9 @@ function Mark({ type }: { type: string }) {
 }
 
 function Header({ detail = false }: { detail?: boolean }) {
+  const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("work")
+  const headerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     if (detail) return
@@ -360,26 +362,54 @@ function Header({ detail = false }: { detail?: boolean }) {
     return () => observer.disconnect()
   }, [detail])
 
+  useEffect(() => {
+    if (!menuOpen) return
+    const closeMenu = (event: MouseEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setMenuOpen(false)
+    }
+    document.addEventListener("mousedown", closeMenu)
+    return () => document.removeEventListener("mousedown", closeMenu)
+  }, [menuOpen])
+
   return (
-    <header className="site-header">
+    <header className="site-header" ref={headerRef}>
       {!detail && (
-        <nav aria-label="Primary navigation">
-            <a className={activeSection === "work" ? "is-active" : ""} href="#work" aria-label="Work">
-              <span className="nav-label">Work</span><span className="nav-dot" aria-hidden="true" />
-            </a>
-            <a className={activeSection === "oceanx" ? "is-active" : ""} href="#oceanx" aria-label="OceanX">
-              <span className="nav-label">OceanX</span><span className="nav-dot" aria-hidden="true" />
-            </a>
-            <a className={activeSection === "endeavour" ? "is-active" : ""} href="#endeavour" aria-label="Endeavour">
-              <span className="nav-label">Endeavour</span><span className="nav-dot" aria-hidden="true" />
-            </a>
-            <a className={activeSection === "achievements" ? "is-active" : ""} href="#achievements" aria-label="Achievements">
-              <span className="nav-label">Achievements</span><span className="nav-dot" aria-hidden="true" />
-            </a>
-            <a className={activeSection === "contact" ? "is-active" : ""} href="#contact" aria-label="Contact">
-              <span className="nav-label">Contact</span><span className="nav-dot" aria-hidden="true" />
-            </a>
-        </nav>
+        <>
+          <nav
+            id="primary-navigation"
+            className={menuOpen ? "is-open" : ""}
+            aria-label="Primary navigation"
+          >
+            {[
+              ["work", "Work"],
+              ["oceanx", "OceanX"],
+              ["endeavour", "Endeavour"],
+              ["achievements", "Achievements"],
+              ["contact", "Contact"],
+            ].map(([id, label]) => (
+              <a
+                key={id}
+                className={activeSection === id ? "is-active" : ""}
+                href={`#${id}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                <span className="nav-label">{label}</span>
+                <span className="nav-dot" aria-hidden="true" />
+              </a>
+            ))}
+          </nav>
+          <button
+            className="menu-toggle"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+          </button>
+        </>
       )}
     </header>
   )
