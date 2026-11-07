@@ -364,11 +364,21 @@ function Header({ detail = false }: { detail?: boolean }) {
     <header className="site-header">
       {!detail && (
         <nav aria-label="Primary navigation">
-            <a className={activeSection === "work" ? "is-active" : ""} href="#work">Work</a>
-            <a className={activeSection === "oceanx" ? "is-active" : ""} href="#oceanx">OceanX</a>
-            <a className={activeSection === "endeavour" ? "is-active" : ""} href="#endeavour">Endeavour</a>
-            <a className={activeSection === "achievements" ? "is-active" : ""} href="#achievements">Achievements</a>
-            <a className={activeSection === "contact" ? "is-active" : ""} href="#contact">Contact</a>
+            <a className={activeSection === "work" ? "is-active" : ""} href="#work" aria-label="Work">
+              <span className="nav-label">Work</span><span className="nav-dot" aria-hidden="true" />
+            </a>
+            <a className={activeSection === "oceanx" ? "is-active" : ""} href="#oceanx" aria-label="OceanX">
+              <span className="nav-label">OceanX</span><span className="nav-dot" aria-hidden="true" />
+            </a>
+            <a className={activeSection === "endeavour" ? "is-active" : ""} href="#endeavour" aria-label="Endeavour">
+              <span className="nav-label">Endeavour</span><span className="nav-dot" aria-hidden="true" />
+            </a>
+            <a className={activeSection === "achievements" ? "is-active" : ""} href="#achievements" aria-label="Achievements">
+              <span className="nav-label">Achievements</span><span className="nav-dot" aria-hidden="true" />
+            </a>
+            <a className={activeSection === "contact" ? "is-active" : ""} href="#contact" aria-label="Contact">
+              <span className="nav-label">Contact</span><span className="nav-dot" aria-hidden="true" />
+            </a>
         </nav>
       )}
     </header>

@@ -57,6 +57,7 @@ main { min-height: 100vh; overflow: hidden; }
 .site-header nav { display: flex; gap: 38px; }
 .site-header nav { justify-self: center; }
 .site-header nav a { color: var(--muted); font-size: 12px; transition: color .2s ease; }
+.site-header nav a .nav-dot { display: none; }
 .site-header nav a:hover { color: var(--text); }
 .site-header nav a.is-active { color: var(--text); }
 .location {
@@ -336,24 +337,69 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .site-header, .hero, .work-section, .oceanx-section, .about-section, .endeavours-section, .profile-section, .achievements-section, footer, .detail-hero, .case-study, .next-project { padding-left: 20px; padding-right: 20px; }
   .site-header { grid-template-columns: 1fr; }
   .site-header nav {
+    align-items: center;
+    background: rgb(10 12 11 / 92%);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    box-shadow: 0 12px 30px rgb(0 0 0 / 24%);
     display: flex;
-    gap: 24px;
-    justify-content: flex-start;
-    max-width: 100%;
-    overflow-x: auto;
-    padding-bottom: 2px;
-    scrollbar-width: none;
+    flex-direction: column;
+    gap: 8px;
+    padding: 9px 7px;
+    position: fixed;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 11;
+  }
+  .site-header nav a {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+    width: 30px;
+  }
+  .site-header nav a .nav-label {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text);
+    font-size: 9px;
+    left: auto;
+    letter-spacing: .08em;
+    opacity: 0;
+    padding: 7px 10px;
+    pointer-events: none;
+    position: absolute;
+    right: 38px;
+    text-transform: uppercase;
+    transform: translateX(5px);
+    transition: opacity .2s ease, transform .2s ease;
     white-space: nowrap;
   }
-  .site-header nav::-webkit-scrollbar { display: none; }
-  .site-header nav a {
-    flex: 0 0 auto;
-    font-size: 10px;
-    letter-spacing: .12em;
-    padding: 8px 0;
-    text-transform: uppercase;
+  .site-header nav a .nav-dot {
+    background: var(--muted);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    display: block;
+    height: 7px;
+    transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    width: 7px;
   }
-  .site-header nav a.is-active { color: var(--accent); }
+  .site-header nav a:hover .nav-label,
+  .site-header nav a:focus-visible .nav-label,
+  .site-header nav a.is-active .nav-label {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .site-header nav a.is-active .nav-dot {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.35);
+  }
   .location { display: none; }
   .hero { min-height: auto; }
   .hero h1 { font-size: clamp(48px, 15vw, 72px); padding: 100px 0 90px; }
