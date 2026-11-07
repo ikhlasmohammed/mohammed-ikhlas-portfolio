@@ -940,6 +940,15 @@ function App() {
               />
               <figcaption>Learning together</figcaption>
             </figure>
+            <figure>
+              <img
+                src={assetUrl("/images/hanoi/vietnam-flags.jpg")}
+                alt="Vietnamese flags displayed along a tree-lined walkway"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Vietnam in colour</figcaption>
+            </figure>
           </div>
         </section>
       </section>

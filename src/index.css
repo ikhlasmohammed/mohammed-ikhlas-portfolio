@@ -337,71 +337,47 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .site-header, .hero, .work-section, .oceanx-section, .about-section, .endeavours-section, .profile-section, .achievements-section, footer, .detail-hero, .case-study, .next-project { padding-left: 20px; padding-right: 20px; }
   .site-header { grid-template-columns: 1fr; }
   .site-header nav {
-    align-items: center;
-    background: rgb(10 12 11 / 92%);
+    align-items: stretch;
+    background: rgb(17 20 18 / 96%);
     border: 1px solid var(--line);
-    border-radius: 999px;
-    box-shadow: 0 12px 30px rgb(0 0 0 / 24%);
+    border-radius: 18px;
+    bottom: 14px;
+    box-shadow: 0 12px 30px rgb(0 0 0 / 30%);
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 9px 7px;
+    flex-direction: row;
+    gap: 2px;
+    justify-content: space-around;
+    left: 14px;
+    padding: 6px;
     position: fixed;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 14px;
     z-index: 11;
   }
   .site-header nav a {
     align-items: center;
-    border-radius: 50%;
+    border-radius: 12px;
     display: flex;
-    height: 30px;
+    flex: 1;
+    height: 42px;
     justify-content: center;
     padding: 0;
     position: relative;
-    width: 30px;
+    transition: background .2s ease, color .2s ease;
   }
   .site-header nav a .nav-label {
-    background: var(--surface-2);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    color: var(--text);
-    font-size: 9px;
-    left: auto;
-    letter-spacing: .08em;
-    opacity: 0;
-    padding: 7px 10px;
-    pointer-events: none;
-    position: absolute;
-    right: 38px;
-    text-transform: uppercase;
-    transform: translateX(5px);
-    transition: opacity .2s ease, transform .2s ease;
-    white-space: nowrap;
-  }
-  .site-header nav a .nav-dot {
-    background: var(--muted);
-    border: 2px solid transparent;
-    border-radius: 50%;
+    color: var(--muted);
     display: block;
-    height: 7px;
-    transition: background .2s ease, border-color .2s ease, transform .2s ease;
-    width: 7px;
+    font-size: 9px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
   }
-  .site-header nav a:hover .nav-label,
-  .site-header nav a:focus-visible .nav-label,
-  .site-header nav a.is-active .nav-label {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  .site-header nav a.is-active .nav-dot {
-    background: var(--accent);
-    border-color: var(--accent);
-    transform: scale(1.35);
-  }
+  .site-header nav a .nav-dot { display: none; }
+  .site-header nav a:hover,
+  .site-header nav a:focus-visible,
+  .site-header nav a.is-active { background: var(--surface-2); }
+  .site-header nav a.is-active .nav-label { color: var(--accent); }
   .location { display: none; }
-  .hero { min-height: auto; }
+  .hero { min-height: auto; padding-bottom: 125px; }
   .hero h1 { font-size: clamp(48px, 15vw, 72px); padding: 100px 0 90px; }
   .hero-bottom { margin-left: 0; }
   .hero-links { flex-wrap: wrap; }
