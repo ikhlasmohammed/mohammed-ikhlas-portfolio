@@ -368,7 +368,16 @@ function Header({ detail = false }: { detail?: boolean }) {
       if (!headerRef.current?.contains(event.target as Node)) setMenuOpen(false)
     }
     document.addEventListener("mousedown", closeMenu)
-    return () => document.removeEventListener("mousedown", closeMenu)
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false)
+    }
+    document.addEventListener("keydown", closeOnEscape)
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.removeEventListener("mousedown", closeMenu)
+      document.removeEventListener("keydown", closeOnEscape)
+      document.body.style.overflow = ""
+    }
   }, [menuOpen])
 
   return (
