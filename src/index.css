@@ -365,17 +365,30 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
     transition: background .2s ease, color .2s ease;
   }
   .site-header nav a .nav-label {
-    color: var(--muted);
-    display: block;
-    font-size: 9px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
-  .site-header nav a .nav-dot { display: none; }
+  .site-header nav a .nav-dot {
+    background: var(--muted);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    display: block;
+    height: 7px;
+    transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    width: 7px;
+  }
   .site-header nav a:hover,
-  .site-header nav a:focus-visible,
-  .site-header nav a.is-active { background: var(--surface-2); }
-  .site-header nav a.is-active .nav-label { color: var(--accent); }
+  .site-header nav a:focus-visible { background: var(--surface-2); }
+  .site-header nav a.is-active .nav-dot {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.45);
+  }
   .location { display: none; }
   .hero { min-height: auto; padding-bottom: 125px; }
   .hero h1 { font-size: clamp(48px, 15vw, 72px); padding: 100px 0 90px; }
