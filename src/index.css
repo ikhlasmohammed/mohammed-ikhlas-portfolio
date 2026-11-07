@@ -375,18 +375,19 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
     background: rgb(17 20 18 / 82%);
     border: 1px solid var(--line);
     border-radius: 999px;
-    bottom: max(12px, env(safe-area-inset-bottom));
+    bottom: 12px !important;
     box-shadow: 0 12px 26px rgb(0 0 0 / 28%);
     display: flex;
     gap: 2px;
     height: 58px;
     justify-content: space-around;
-    left: 50%;
+    left: 50% !important;
     padding: 5px 8px;
     position: fixed !important;
-    right: auto;
-    top: auto;
-    transform: translateX(-50%);
+    right: auto !important;
+    top: auto !important;
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    transform: translate(-50%, 0) !important;
     width: min(calc(100vw - 44px), 320px);
     z-index: 12;
   }
