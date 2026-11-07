@@ -25,7 +25,7 @@
 }
 
 main { min-height: 100vh; overflow: hidden; }
-.site-header, .hero, .work-section, .oceanx-section, .about-section, .endeavours-section, .profile-section, .achievements-section, footer, .detail-hero, .case-study, .next-project {
+.site-header, .hero, .work-section, .oceanx-section, .about-section, .endeavours-section, .achievements-section, footer, .detail-hero, .case-study, .next-project {
   margin: 0 auto;
   max-width: 1500px;
   padding-left: 52px;
@@ -122,7 +122,7 @@ svg { fill: none; height: 16px; stroke: currentColor; stroke-linecap: round; str
 .work-section { border-top: 1px solid var(--line); padding-bottom: 120px; padding-top: 120px; }
 .section-intro { align-items: end; display: flex; justify-content: space-between; margin-bottom: 64px; }
 .eyebrow { color: var(--muted); font-size: 9px; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; }
-.section-intro h2, .profile-section h2 {
+.section-intro h2 {
   font: 500 clamp(42px, 5vw, 70px)/1 'Manrope', sans-serif;
   letter-spacing: -.055em;
   margin-top: 20px;
@@ -205,11 +205,6 @@ svg { fill: none; height: 16px; stroke: currentColor; stroke-linecap: round; str
 .endeavour-gallery figure:hover img { filter: saturate(1.08); transform: scale(1.025); }
 .endeavour-gallery figcaption { background: linear-gradient(transparent, rgb(4 6 5 / 88%)); bottom: 0; color: #dce0dc; font-size: 9px; left: 0; letter-spacing: .1em; padding: 32px 16px 14px; position: absolute; right: 0; text-transform: uppercase; }
 
-.profile-section { border-top: 1px solid var(--line); display: grid; gap: 8%; grid-template-columns: 45% 1fr; padding-bottom: 130px; padding-top: 130px; }
-.skills { border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; }
-.skills div { border-bottom: 1px solid var(--line); color: #d5d9d4; font: 500 15px 'Manrope'; padding: 20px 10px; }
-.skills div:nth-child(odd) { border-right: 1px solid var(--line); }
-.skills span { color: #5f6761; font-size: 8px; margin-right: 16px; }
 
 .achievements-section { border-top: 1px solid var(--line); padding-bottom: 130px; padding-top: 130px; }
 .achievements-intro { align-items: end; display: flex; justify-content: space-between; margin-bottom: 72px; }
@@ -327,7 +322,7 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
 .next-project button svg { height: 45px; width: 45px; }
 
 @media (max-width: 1000px) {
-  .site-header, .hero, .work-section, .oceanx-section, .about-section, .endeavours-section, .profile-section, .achievements-section, footer, .detail-hero, .case-study, .next-project { padding-left: 28px; padding-right: 28px; }
+  .site-header, .hero, .work-section, .oceanx-section, .about-section, .endeavours-section, .achievements-section, footer, .detail-hero, .case-study, .next-project { padding-left: 28px; padding-right: 28px; }
   .site-header { grid-template-columns: 1fr; }
   .site-header nav {
     align-items: center;
@@ -394,7 +389,7 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
 }
 
 @media (max-width: 640px) {
-  .site-header, .hero, .work-section, .oceanx-section, .about-section, .endeavours-section, .profile-section, .achievements-section, footer, .detail-hero, .case-study, .next-project { padding-left: 20px; padding-right: 20px; }
+  .site-header, .hero, .work-section, .oceanx-section, .about-section, .endeavours-section, .achievements-section, footer, .detail-hero, .case-study, .next-project { padding-left: 20px; padding-right: 20px; }
   .hero { min-height: auto; }
   .hero h1 { font-size: clamp(48px, 15vw, 72px); padding: 100px 0 90px; }
   .hero-bottom { margin-left: 0; }
@@ -419,9 +414,6 @@ footer { border-top: 1px solid var(--line); padding-bottom: 28px; padding-top: 1
   .endeavour-gallery { grid-template-columns: 1fr 1fr; }
   .endeavour-gallery figure:first-child { grid-column: 1 / -1; grid-row: auto; }
   .endeavour-gallery img { min-height: 150px; }
-  .profile-section { grid-template-columns: 1fr; padding-bottom: 90px; padding-top: 90px; }
-  .skills { margin-top: 55px; }
-  .skills div { font-size: 12px; }
   .achievements-section { padding-bottom: 90px; padding-top: 90px; }
   .achievements-intro { align-items: flex-start; flex-direction: column; gap: 28px; margin-bottom: 50px; }
   .achievement-feature-grid { grid-template-columns: 1fr; }

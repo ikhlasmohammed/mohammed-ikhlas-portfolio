@@ -275,19 +275,6 @@ const projects: Project[] = [
   },
 ]
 
-const skills = [
-  "Python",
-  "Machine Learning",
-  "UiPath",
-  "AWS",
-  "Flutter",
-  "Firebase",
-  "JavaScript",
-  "SQL",
-  "Git",
-  "Figma",
-]
-
 function Arrow({ direction = "up" }: { direction?: "up" | "left" }) {
   return direction === "left" ? (
     <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -992,29 +979,10 @@ function App() {
         </section>
       </section>
 
-      <section className="profile-section">
-        <div>
-          <p className="eyebrow">04 / Capabilities</p>
-          <h2>
-            From model to
-            <br />
-            meaningful product.
-          </h2>
-        </div>
-        <div className="skills">
-          {skills.map((skill, index) => (
-            <div key={skill}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              {skill}
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="achievements-section" id="achievements">
         <div className="achievements-intro">
           <div>
-            <p className="eyebrow">05 / Achievements</p>
+            <p className="eyebrow">04 / Achievements</p>
             <h2>
               Recognition earned
               <br />
@@ -1145,7 +1113,7 @@ function App() {
       </section>
 
       <footer id="contact">
-        <p className="eyebrow">06 / Let’s connect</p>
+        <p className="eyebrow">05 / Let’s connect</p>
         <div className="footer-main">
           <h2>
             Have an idea?
